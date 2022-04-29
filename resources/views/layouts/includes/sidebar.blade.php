@@ -22,9 +22,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('batches.index') }}" class="nav-link">
                     <i class="fas fa-users"></i>
                     <p>Batches</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('semesters.index') }}" class="nav-link">
+                    <i class="fas fa-book-open"></i>
+                    <p>Semester</p>
                 </a>
             </li>
             <li class="nav-item">

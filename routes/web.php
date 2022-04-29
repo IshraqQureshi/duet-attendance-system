@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BatchesController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\SemesterContoller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +25,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('departments', DepartmentController::class)->middleware('auth');
+Route::resource('semesters', SemesterContoller::class)->middleware('auth');
+Route::resource('batches', BatchesController::class)->middleware('auth');
+
 
