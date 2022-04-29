@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark">{{ $pageTitle }}</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -22,6 +22,16 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+            @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
+            @if(session()->has('error'))
+                <div class="alert alert-error">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
             @yield('pageContent')
         </div>
     </section>
