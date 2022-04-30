@@ -3,6 +3,10 @@
 use App\Http\Controllers\BatchesController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\SemesterContoller;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TimeTableController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +31,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('departments', DepartmentController::class)->middleware('auth');
 Route::resource('semesters', SemesterContoller::class)->middleware('auth');
 Route::resource('batches', BatchesController::class)->middleware('auth');
-
-
+Route::resource('subjects', SubjectController::class)->middleware('auth');
+Route::resource('teachers', TeacherController::class)->middleware('auth');
+Route::resource('students', StudentController::class)->middleware('auth');
+Route::resource('time-table', TimeTableController::class)->middleware('auth');
+Route::get('/time-table/{batchID}/view', [TimeTableController::class, 'view'])->name('time-table.view');
+Route::get('/time-table/{batchID}/create', [TimeTableController::class, 'create'])->name('time-table.batch.create');
+Route::post('/time-table/{batchID}/store', [TimeTableController::class, 'store'])->name('time-table.batch.store');
+Route::get('/time-table/{batchID}/edit/{id}', [TimeTableController::class, 'edit'])->name('time-table.batch.edit');
+Route::delete('/time-table/{batchID}/destroy/{id}', [TimeTableController::class, 'destroy'])->name('time-table.batch.destroy');

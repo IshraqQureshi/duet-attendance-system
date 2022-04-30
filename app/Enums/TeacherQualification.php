@@ -12,5 +12,6 @@ use BenSampo\Enum\Enum;
 final class TeacherQualification extends Enum
 {
     const Dr    =   1;
-    const Engr  =   2;    
+    const Engr  =   2;
+    const Sir   =   3;
 }

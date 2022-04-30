@@ -34,25 +34,25 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('subjects.index') }}" class="nav-link">
                     <i class="fas fa-book"></i>
                     <p>Subjects</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('teachers.index') }}" class="nav-link">
                     <i class="fas fa-chalkboard-teacher"></i>
                     <p>Teachers</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('students.index') }}" class="nav-link">
                     <i class="fas fa-graduation-cap"></i>
                     <p>Students</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('time-table.index') }}" class="nav-link">
                     <i class="fas fa-table"></i>
                     <p>Timetable</p>
                 </a>
