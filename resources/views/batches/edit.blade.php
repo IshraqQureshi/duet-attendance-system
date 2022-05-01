@@ -34,7 +34,7 @@
                     @php
                         $selected = $semesterID == $semester->id ? 'selected' : '';
                     @endphp
-                    <option value="{{ $semester->id }}" {{ $selected }}>{{ $semester->name }}</option>
+                    <option value="{{ $semester->id }}" {{ $selected }}>{{ $semester->name }} - {{ $semester->department->name }}</option>
                   @endforeach                  
                 </select>
               </div>             
