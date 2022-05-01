@@ -47,7 +47,7 @@
                     @php
                         $selected = $batchID == $batch->id ? 'selected' : '';
                     @endphp
-                    <option value="{{ $batch->id }}" {{ $selected }}>{{ $batch->name }}</option>
+                    <option value="{{ $batch->id }}" {{ $selected }}>{{ $batch->name }} - {{ $batch->department->name }}</option>
                   @endforeach                  
                 </select>
             </div>            

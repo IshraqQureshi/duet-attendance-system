@@ -58,7 +58,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('attendance-sheet.view') }}" class="nav-link">
                     <i class="fas fa-file"></i>
                     <p>Attendence Sheets</p>
                 </a>

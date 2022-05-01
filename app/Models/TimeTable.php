@@ -12,4 +12,12 @@ class TimeTable extends Model
     public function subject(){
         return $this->belongsTo( Subject::class, 'subject_id', 'id');
     }
+
+    public function department(){
+        return $this->belongsTo( Department::class, 'department_id', 'id');
+    }
+
+    public function batch(){
+        return $this->belongsTo( Department::class, 'batch_id', 'id');
+    }
 }

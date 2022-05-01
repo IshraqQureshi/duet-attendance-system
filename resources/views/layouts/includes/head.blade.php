@@ -29,5 +29,7 @@
   <!-- DataTable -->
   <link rel="stylesheet" href="/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <!-- jQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

@@ -8,6 +8,8 @@ use App\Enums\TeacherQualification;
 use App\Enums\Days;
 use App\Enums\SubjectType;
 use App\Enums\StudentSection;
+use App\Models\Student;
+use Illuminate\Support\Facades\DB;
 
 class GeneralHelper {
     
@@ -27,6 +29,26 @@ class GeneralHelper {
             case 'StudentSection':
                 return 'App\Enums\StudentSection';
         endswitch;
+    }
+
+    public static function get_students($batchID, $sectionName) {
+        switch($sectionName):
+            case 'A':
+                $sections = [StudentSection::fromKey('A1')->value, StudentSection::fromKey('A2')->value];
+                break;
+            case 'B':
+                $sections = [StudentSection::fromKey('B1')->value, StudentSection::fromKey('B2')->value];
+                break;
+            case 'C':
+                $sections = [StudentSection::fromKey('C1')->value, StudentSection::fromKey('C2')->value];
+                break;
+        endswitch;
+        $students = DB::select(DB::raw("select * from duet_students WHERE `batch_id` = $batchID AND (`section` = $sections[0] OR `section` = $sections[1])"));
+        return $students;
+    }
+
+    public static function get_students_single($batchID, $sectionID) {
+        return Student::where(['batch_id' => $batchID, 'section' => $sectionID])->get();
     }
 
 }

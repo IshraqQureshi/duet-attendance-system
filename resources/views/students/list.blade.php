@@ -15,6 +15,7 @@
                 <th>Roll No</th>
                 <th>Section</th>
                 <th>Batch</th>
+                <th>Department</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -26,6 +27,7 @@
                     <td>{{ $student->roll_no }}</td>
                     <td>{{ GeneralHelper::getEnumValue('StudentSection', $student->section) }}</td>
                     <td>{{ $student->batch->name }}</td>
+                    <td>{{ $student->batch->department->name }}</td>
                     <td class="d-flex ">
                         <a href="{{ route('students.edit', $student->id) }}" class="btn btn-warning btn-sm mr-2">Edit</a>
                         <form method="POST" action="{{ route('students.destroy', $student->id) }}">
@@ -44,6 +46,7 @@
                 <th>Roll No</th>
                 <th>Section</th>
                 <th>Batch</th>
+                <th>Department</th>
                 <th>Actions</th>
             </tr>
         </tfoot>

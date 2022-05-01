@@ -15,7 +15,7 @@
                     @php
                         $selected = $subjectID == $subject->id ? 'selected' : '';
                     @endphp
-                    <option value="{{ $subject->id }}" {{ $selected }}>{{ $subject->name }}</option>
+                    <option value="{{ $subject->id }}" {{ $selected }}>{{ $subject->name }} - {{ GeneralHelper::getEnumValue('SubjectType', $subject->type) }}</option>
                   @endforeach                  
                 </select>
             </div>   

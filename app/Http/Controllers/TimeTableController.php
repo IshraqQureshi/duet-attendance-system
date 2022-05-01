@@ -24,6 +24,7 @@ class TimeTableController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
         $this->data['pageTitle']            = 'Time Table';       
         $this->data['departmentID']         = '';
         $this->data['batchID']              = '';
@@ -75,7 +76,7 @@ class TimeTableController extends Controller
             'subject_id'    => 'required',
             'day'           => 'required',
             'start_time'    => 'required',
-            'end_time'      => 'required|date_format:h:i A|after:start_time',
+            'end_time'      => 'required|after:start_time',
             'section_id'    => 'required'
         ], [], [
             'subject_id'    => 'Subject',
@@ -137,7 +138,7 @@ class TimeTableController extends Controller
     {
         $batch          = Batch::where('id', $id)->first();
         $this->data['pageTitle'] = $batch->name .' - '. $batch->department->name;
-        $this->data['timeTables'] = TimeTable::all();
+        $this->data['timeTables'] = TimeTable::where('batch_id', $id)->get();
         $this->data['batchID'] = $id;
         return view('timeTables.view', $this->data);
     }
