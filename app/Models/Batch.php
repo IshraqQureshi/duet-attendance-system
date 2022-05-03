@@ -9,6 +9,8 @@ class Batch extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'department_id', 'current_semester'];
+
     public function department(){
         return $this->belongsTo(Department::class, 'department_id', 'id');
     }

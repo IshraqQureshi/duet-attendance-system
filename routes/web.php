@@ -3,6 +3,7 @@
 use App\Http\Controllers\AttendanceSheetController;
 use App\Http\Controllers\BatchesController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\SemesterContoller;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
@@ -45,3 +46,9 @@ Route::delete('/time-table/{batchID}/destroy/{id}', [TimeTableController::class,
 Route::get('/attendance-sheet', [AttendanceSheetController::class, 'view'])->name('attendance-sheet.view');
 
 Route::post('/attendance-sheet/generate', [AttendanceSheetController::class, 'generate'])->name('attendance-sheet.generate');
+
+
+Route::get('/import', [ImportController::class, 'index'])->name('import.index');
+// Route::get('/import', 'ImportController@getImport')->name('import');
+Route::post('/import_parse/{name}', [ImportController::class, 'parseImport'])->name('import.parse');
+Route::post('/import_process', [ImportController::class, 'processImport'])->name('import.process');

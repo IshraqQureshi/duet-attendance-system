@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
+
+    protected $fillable = ['name', 'type', 'semester_id', 'teacher_id'];
+    
     use HasFactory;
 
     public function semester(){
