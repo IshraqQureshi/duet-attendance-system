@@ -58,7 +58,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <input type="submit" class="btn btn-primary" value="Save">
-            <a href="{{ route('teachers.index') }}" class="btn btn-danger">Back</a>
+            <a href="{{ route('students.index') }}" class="btn btn-danger">Back</a>
         </div>
     </form>
   </div>

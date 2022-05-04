@@ -28,7 +28,7 @@
                 </div>
             @endif
             @if(session()->has('error'))
-                <div class="alert alert-error">
+                <div class="alert alert-danger">
                     {{ session()->get('error') }}
                 </div>
             @endif
@@ -38,9 +38,16 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  
   
     @include('layouts.includes.footer')
 
+</div>
+
+<div class="waitAlertOverlay"></div>
+<div class="waitAlert">
+  <h4>Please Wait...</h4>
 </div>
 <!-- ./wrapper -->
 @include('layouts.includes.foot')

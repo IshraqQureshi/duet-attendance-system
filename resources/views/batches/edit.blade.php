@@ -18,7 +18,7 @@
             <div class="form-group">
               <label>Department</label>
               
-              <select class="form-control" name="department_id">
+              <select class="form-control department_select" name="department_id">
                 @foreach ($departments as $department)
                   @php
                       $selected = $departmentID == $department->id ? 'selected' : '';
@@ -29,13 +29,8 @@
             </div> 
               <div class="form-group">
                 <label>Semester</label>                
-                <select class="form-control" name="current_semester">
-                  @foreach ($semesters as $semester)
-                    @php
-                        $selected = $semesterID == $semester->id ? 'selected' : '';
-                    @endphp
-                    <option value="{{ $semester->id }}" {{ $selected }}>{{ $semester->name }} - {{ $semester->department->name }}</option>
-                  @endforeach                  
+                <select class="form-control semester_select" name="current_semester" data-selected="{{ $semesterID }}">
+                  <option>Please Select</option>
                 </select>
               </div>             
             @if( $editID )

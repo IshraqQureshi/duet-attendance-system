@@ -95,8 +95,8 @@ class StudentController extends Controller
                 $student->save();
 
                 return redirect(route('students.index'))->with('success', 'Record(s) saved successfully!');
-            } catch (Exception $e) {
-                return redirect(route('students.index'))->with('error', $e);
+            } catch (\Exception $e) {
+                return redirect(route('students.index'))->with('error', 'Something went wrong!!');
             }
 
         }
@@ -155,8 +155,8 @@ class StudentController extends Controller
         try {
             Student::where('id', $id)->first()->delete();
             return redirect(route('students.index'))->with('success', 'Record(s) delete successfully!');
-        } catch (Exception $e) {
-            return redirect(route('students.index'))->with('error', $e);
+        } catch (\Exception $e) {
+            return redirect(route('students.index'))->with('error', 'Somthing went wrong!!');
         }
     }
 }

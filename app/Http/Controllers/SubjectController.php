@@ -93,8 +93,8 @@ class SubjectController extends Controller
                 $subject->save();
 
                 return redirect(route('subjects.index'))->with('success', 'Record(s) saved successfully!');
-            } catch (Exception $e) {
-                return redirect(route('subjects.index'))->with('error', $e);
+            } catch (\Exception $e) {
+                return redirect(route('subjects.index'))->with('error', 'Something went wrong!!');
             }
 
         }
@@ -152,8 +152,8 @@ class SubjectController extends Controller
         try {
             Subject::where('id', $id)->first()->delete();
             return redirect(route('subjects.index'))->with('success', 'Record(s) delete successfully!');
-        } catch (Exception $e) {
-            return redirect(route('subjects.index'))->with('error', $e);
+        } catch (\Exception $e) {            
+            return redirect(route('subjects.index'))->with('error', 'Something went wrong!!');
         }
     }
 }

@@ -10,13 +10,14 @@
         <div class="card-body">
             <div class="form-group">
                 <label>Subject</label>
-                <select class="form-control" name="subject_id">
-                  @foreach ($subjects as $subject)
+                <select class="form-control subject_select" name="subject_id" data-selected="{{ $subjectID }}" data-batch_id="{{ $batchID }}">
+                    <option>Please Select</option>
+                    {{-- @foreach ($subjects as $subject)
                     @php
                         $selected = $subjectID == $subject->id ? 'selected' : '';
                     @endphp
                     <option value="{{ $subject->id }}" {{ $selected }}>{{ $subject->name }} - {{ GeneralHelper::getEnumValue('SubjectType', $subject->type) }}</option>
-                  @endforeach                  
+                  @endforeach                   --}}
                 </select>
             </div>   
             <div class="form-group">
@@ -62,7 +63,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <input type="submit" class="btn btn-primary" value="Save">
-            <a href="{{ route('teachers.index') }}" class="btn btn-danger">Back</a>
+            <a href="{{ route('time-table.index') }}" class="btn btn-danger">Back</a>
         </div>
     </form>
   </div>

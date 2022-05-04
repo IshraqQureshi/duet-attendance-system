@@ -82,8 +82,8 @@ class SemesterContoller extends Controller
                 $semester->save();
 
                 return redirect(route('semesters.index'))->with('success', 'Record(s) saved successfully!');
-            } catch (Exception $e) {
-                return redirect(route('semesters.index'))->with('error', $e);
+            } catch (\Exception $e) {
+                return redirect(route('semesters.index'))->with('error', 'Something went wrong!!');
             }
 
         }
@@ -139,8 +139,8 @@ class SemesterContoller extends Controller
         try {
             Semester::where('id', $id)->first()->delete();
             return redirect(route('semesters.index'))->with('success', 'Record(s) delete successfully!');
-        } catch (Exception $e) {
-            return redirect(route('semesters.index'))->with('error', $e);
+        } catch (\Exception $e) {
+            return redirect(route('semesters.index'))->with('error', 'Something went wrong!!');
         }
     }
 }

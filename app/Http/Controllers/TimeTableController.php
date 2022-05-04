@@ -110,8 +110,8 @@ class TimeTableController extends Controller
                 $timeTable->save();
 
                 return redirect(route('time-table.view', ['batchID' => $id]))->with('success', 'Record(s) saved successfully!');
-            } catch (Exception $e) {
-                return redirect(route('time-table.view', ['batchID' => $id]))->with('error', $e);
+            } catch (\Exception $e) {
+                return redirect(route('time-table.view', ['batchID' => $id]))->with('error', 'Something went wrong!!');
             }
 
         }
@@ -187,8 +187,8 @@ class TimeTableController extends Controller
         try {
             TimeTable::where('id', $id)->first()->delete();
             return redirect(route('time-table.view', ['batchID' => $batchID]))->with('success', 'Record(s) delete successfully!');
-        } catch (Exception $e) {
-            return redirect(route('time-table.view', ['batchID' => $batchID]))->with('error', $e);
+        } catch (\Exception $e) {
+            return redirect(route('time-table.view', ['batchID' => $batchID]))->with('error', 'Something went wrong!!');
         }
     }
 }

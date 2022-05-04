@@ -10,6 +10,8 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TimeTableController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AjaxContoller;
+use App\Http\Controllers\ExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +54,14 @@ Route::get('/import', [ImportController::class, 'index'])->name('import.index');
 // Route::get('/import', 'ImportController@getImport')->name('import');
 Route::post('/import_parse/{name}', [ImportController::class, 'parseImport'])->name('import.parse');
 Route::post('/import_process', [ImportController::class, 'processImport'])->name('import.process');
+
+Route::get('/export', [ExportController::class, 'index'])->name('export.index');
+Route::get('/export-process', [ExportController::class, 'export'])->name('export.process');
+
+
+
+
+Route::post('/get-semester', [AjaxContoller::class, 'get_semester'])->name('ajax.get_semester');
+Route::post('/get-teacher', [AjaxContoller::class, 'get_teacher'])->name('ajax.get_teacher');
+Route::post('/get-subject', [AjaxContoller::class, 'get_subject'])->name('ajax.get_subject');
+

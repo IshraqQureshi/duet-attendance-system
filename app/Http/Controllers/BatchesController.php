@@ -87,8 +87,8 @@ class BatchesController extends Controller
                 $batch->save();
 
                 return redirect(route('batches.index'))->with('success', 'Record(s) saved successfully!');
-            } catch (Exception $e) {
-                return redirect(route('batches.index'))->with('error', $e);
+            } catch (\Exception $e) {
+                return redirect(route('batches.index'))->with('error', 'Something went wrong!!');
             }
 
         }
@@ -145,8 +145,8 @@ class BatchesController extends Controller
         try {
             Batch::where('id', $id)->first()->delete();
             return redirect(route('batches.index'))->with('success', 'Record(s) delete successfully!');
-        } catch (Exception $e) {
-            return redirect(route('batches.index'))->with('error', $e);
+        } catch (\Exception $e) {
+            return redirect(route('batches.index'))->with('error', 'Something went wrong!!');
         }
     }
 }

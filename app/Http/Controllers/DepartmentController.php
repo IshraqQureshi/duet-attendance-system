@@ -81,8 +81,8 @@ class DepartmentController extends Controller
                 $department->save();
 
                 return redirect(route('departments.index'))->with('success', 'Record(s) saved successfully!');
-            } catch (Exception $e) {
-                return redirect(route('departments.index'))->with('error', $e);
+            } catch (\Exception $e) {
+                return redirect(route('departments.index'))->with('error', 'Something went wrong!!');
             }
 
         }
@@ -138,8 +138,8 @@ class DepartmentController extends Controller
         try {
             Department::where('id', $id)->first()->delete();
             return redirect(route('departments.index'))->with('success', 'Record(s) delete successfully!');
-        } catch (Exception $e) {
-            return redirect(route('departments.index'))->with('error', $e);
+        } catch (\Exception $e) {
+            return redirect(route('departments.index'))->with('error', 'Something went wrong!!');
         }
 
     }

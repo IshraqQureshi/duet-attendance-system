@@ -63,6 +63,18 @@
                     <p>Attendence Sheets</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('import.index') }}" class="nav-link">
+                <i class="fa fa-solid fa-file-import"></i>
+                    <p>Import</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('export.index') }}" class="nav-link">
+                <i class="fa fa-solid fa-file-export"></i>
+                    <p>Export</p>
+                </a>
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

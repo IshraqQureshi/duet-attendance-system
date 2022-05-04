@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label>Semester</label>
-                <select class="form-control" name="semester_id">
+                <select class="form-control semester_teacher" name="semester_id">
                   @foreach ($semesters as $semester)
                     @php
                         $selected = $semesterID == $semester->id ? 'selected' : '';
@@ -39,13 +39,14 @@
             </div> 
             <div class="form-group">
                 <label>Teacher</label>
-                <select class="form-control" name="teacher_id">                    
-                  @foreach ($teachers as $teacher)
+                <select class="form-control teacher_select" name="teacher_id" data-selected="{{ $teacherID }}">                    
+                  <option>Please Select</option>
+                  {{-- @foreach ($teachers as $teacher)
                     @php
                         $selected = $teacherID == $teacher->id ? 'selected' : '';
                     @endphp
                     <option value="{{ $teacher->id }}" {{ $selected }}>{{ $teacher->first_name }} {{ $teacher->last_name }}</option>
-                  @endforeach                  
+                  @endforeach                   --}}
                 </select>
             </div>            
             @if( $editID )
