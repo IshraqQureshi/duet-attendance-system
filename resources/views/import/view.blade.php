@@ -28,7 +28,7 @@
                 </form>               
             </div>
             <div class="col-md-3">
-                <a href="/import-samples/departments.csv" download="department.csv" class="btn btn-warning">Sample CSV</a>
+                <a href="/import-samples/departments.csv" download="departments.csv" class="btn btn-warning">Sample CSV</a>
             </div>
         </div>
 
@@ -55,7 +55,7 @@
                 </form>               
             </div>
             <div class="col-md-3">
-                <a href="#" class="btn btn-warning">Sample CSV</a>
+                <a href="/import-samples/batches.csv" download="batches.csv" class="btn btn-warning">Sample CSV</a>
             </div>
         </div>
         
@@ -82,7 +82,7 @@
                 </form>               
             </div>
             <div class="col-md-3">
-                <a href="#" class="btn btn-warning">Sample CSV</a>
+                <a href="/import-samples/semesters.csv" download="semesters.csv" class="btn btn-warning">Sample CSV</a>
             </div>
         </div>
         
@@ -109,7 +109,7 @@
                 </form>               
             </div>
             <div class="col-md-3">
-                <a href="#" class="btn btn-warning">Sample CSV</a>
+                <a href="/import-samples/subjects.csv" download="subjects.csv" class="btn btn-warning">Sample CSV</a>
             </div>
         </div>
         
@@ -136,7 +136,7 @@
                 </form>               
             </div>
             <div class="col-md-3">
-                <a href="#" class="btn btn-warning">Sample CSV</a>
+                <a href="/import-samples/teachers.csv" download="teachers.csv" class="btn btn-warning">Sample CSV</a>
             </div>
         </div>
         
@@ -163,7 +163,7 @@
                 </form>               
             </div>
             <div class="col-md-3">
-                <a href="#" class="btn btn-warning">Sample CSV</a>
+                <a href="/import-samples/students.csv" download="students.csv" class="btn btn-warning">Sample CSV</a>
             </div>
         </div>
     </div>

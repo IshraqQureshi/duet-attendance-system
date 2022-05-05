@@ -18,6 +18,6 @@ class TimeTable extends Model
     }
 
     public function batch(){
-        return $this->belongsTo( Department::class, 'batch_id', 'id');
+        return $this->belongsTo( Batch::class, 'batch_id', 'id');
     }
 }

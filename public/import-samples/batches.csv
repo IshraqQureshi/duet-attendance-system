@@ -1,5 +1,9 @@
 name,department_code,current_semester
-22F,CS,2nd Semester
-23F,ES,2nd Semester
-24F,ME,2nd Semester
-25F,EL,2nd Semester
+21F,TE,1st Semester
+20F,TE,3rd Semester
+19F,TE,5th Semester
+19,TE,7th Semester
+21F,ESE,1st Semester
+20F,ESE,3rd Semester
+19F,ESE,5th Semester
+19,ESE,7th Semester

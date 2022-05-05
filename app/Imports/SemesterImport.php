@@ -17,7 +17,7 @@ class SemesterImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {        
         $department_code = $row['department_code'];
-        $department_id = Department::where('code', 'LIKE', '%'. $department_code .'%')->first()->id;
+        $department_id = Department::where('code', 'LIKE', '%'. $department_code .'%')->first();
 
         if($department_id):
             $department_id = $department_id->id;

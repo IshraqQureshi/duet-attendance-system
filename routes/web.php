@@ -12,6 +12,7 @@ use App\Http\Controllers\TimeTableController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AjaxContoller;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('logout', [HomeController::class, 'logout'])->name('logout');
+
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::resource('departments', DepartmentController::class)->middleware('auth');
 Route::resource('semesters', SemesterContoller::class)->middleware('auth');

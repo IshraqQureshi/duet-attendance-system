@@ -13,5 +13,7 @@ final class TeacherQualification extends Enum
 {
     const Dr    =   1;
     const Engr  =   2;
-    const Sir   =   3;
+    const Mr   =   3;
+    const Mrs   =   4;
+    const Miss   =   5;
 }

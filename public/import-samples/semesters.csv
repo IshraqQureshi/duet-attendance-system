@@ -1,5 +1,9 @@
-first_name,last_name,qualification,department_code
-Import 01,Import 01,Engr,CS
-Import 02,Import 02,Dr,ES
-Import 03,Import 03,Sir,ME
-Import 04,Import 04,Engr,EL
+name,department_code
+1st Semester,TE
+3rd Semester,TE
+5th Semester,TE
+7th Semester,TE
+1st Semester,ESE
+3rd Semester,ESE
+5th Semester,ESE
+7th Semester,ESE

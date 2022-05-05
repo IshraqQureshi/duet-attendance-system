@@ -8,7 +8,7 @@
 </head>
 <body style="font-family: Arial;margin: 0">
     
-    @foreach($sections as $key => $value)
+    @foreach($sections as $key => $value)    
         @foreach($timeTable as $data)
             @if(GeneralHelper::getEnumValue('SubjectType', $data->subject->type) == 'Lab')
                 @php
@@ -35,8 +35,8 @@
                     <div>
                         <div style="display: flex;justify-content: space-between;margin-bottom: 30px;">
                             <div>
-                                <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Batch: </strong>{{ $data->batch_id }}</h3>
-                                <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Subject: </strong>{{ $data->subject->name }}</h3>
+                                <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Batch: </strong>{{ $data->batch->name }}</h3>
+                                <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Subject: </strong>{{ $data->subject->name }} - ({{ GeneralHelper::getEnumValue('SubjectType', $data->subject->type) }})</h3>
                                 <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Timing: </strong>From {{ date('h:i A', strtotime($data->start_time)) }} to {{ date('h:i A', strtotime($data->end_time)) }}</h3>
                             </div>
                             <div>
@@ -60,13 +60,17 @@
                             <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;text-align: right;"><strong>Teacher Sign:</strong><span style="width: 200px;height: 10px;border-bottom: 1px solid #000;display: inline-block;vertical-align: text-bottom;"></span></h3>
                         </div>
                     </div>
-                </div>
+                </div>            
             @endif
         @endforeach
     @endforeach
 
     <script>
-        window.print();
+        if(document.querySelector('body').childElementCount > 1) {
+            window.print();
+        } else {
+            document.querySelector('body').append('No Students Found!!');
+        }
     </script>
 
 </body>

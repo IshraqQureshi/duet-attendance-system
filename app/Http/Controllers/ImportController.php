@@ -69,7 +69,7 @@ class ImportController extends Controller
         } else {
 
             $path = $request->file('csvFile')->getRealPath();
-           
+                       
             switch($name):
                 case 'department':
                     Excel::import(new DepartmentImport, $path);                    
@@ -80,7 +80,7 @@ class ImportController extends Controller
                 case 'semester':
                     Excel::import(new SemesterImport, $path);
                     break;
-                case 'subject':
+                case 'subjects':
                     Excel::import(new SubjectImport, $path);
                     break;
                 case 'teacher':

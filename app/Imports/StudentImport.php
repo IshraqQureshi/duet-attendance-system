@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Enums\StudentSection;
 use App\Models\Batch;
+use App\Models\Department;
 use App\Models\Student;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -19,13 +20,19 @@ class StudentImport implements ToModel, WithHeadingRow
     {
 
         $batch = $row['batch'];
+        $department_code = $row['department_code'];
         $section = StudentSection::fromKey($row['section'])->value;
-        $batch_id = Batch::where('name', 'LIKE', '%'. $batch .'%')->first();
+        $department = Department::where('code', 'LIKE', '%'. $department_code .'%')->first();
         
-        if($batch_id):
-            $batch_id = $batch_id->id;
+        if($department):
+            $batch_id = Batch::where('name', 'LIKE', '%'. $batch .'%')->where('department_id', $department->id)->first();
+            if($batch_id):
+                $batch_id = $batch_id->id;
+            else:
+                return [];
+            endif;
         else:
-            return [];
+            return [];            
         endif;
 
         return new Student([
