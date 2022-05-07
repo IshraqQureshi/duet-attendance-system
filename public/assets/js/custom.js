@@ -84,7 +84,8 @@ $(function () {
       const batchID = $('.subject_select').data('batch_id');
       const url = '/get-subject';
       const data = { batchID: batchID };
-      ajaxFunc(url, data, 'subject_select', 'id', 'name')
+      console.log(data);
+      ajaxFunc(url, data, 'subject_select', 'id', 'sujectName')
     }
 
 

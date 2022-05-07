@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helpers\GeneralHelper;
 use Illuminate\Http\Request;
 use App\Models\Semester;
 use App\Models\Teacher;
@@ -49,7 +50,11 @@ class AjaxContoller extends Controller
     public function get_subject(Request $request) {
         $batch = Batch::where('id', $request->batchID)->first();
         $data = Subject::where('semester_id', $batch->current_semester)->get()->toArray();
-
-        return $data;
+        $modifiedData = [];
+        foreach($data as $key => $value){
+            $value['sujectName'] = $value['name'] .' - '. GeneralHelper::getEnumValue('SubjectType', $value['type']);
+            $modifiedData[] = $value;
+        }
+        return $modifiedData;
     }
 }

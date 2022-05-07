@@ -8,8 +8,11 @@
 </head>
 <body style="font-family: Arial;margin: 0">
     
-    @foreach($sections as $key => $value)    
+    @foreach($sections as $key => $value)        
         @foreach($timeTable as $data)
+            @if( !in_array( $value, GeneralHelper::getSectionsGroup($key) ) ):
+                @php continue; @endphp
+            @endif
             @if(GeneralHelper::getEnumValue('SubjectType', $data->subject->type) == 'Lab')
                 @php
                     $students = GeneralHelper::get_students_single($data->batch_id, $data->section_id);
@@ -35,7 +38,7 @@
                     <div>
                         <div style="display: flex;justify-content: space-between;margin-bottom: 30px;">
                             <div>
-                                <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Batch: </strong>{{ $data->batch->name }}</h3>
+                                <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Batch: </strong>{{ $data->batch->name }} - ({{ GeneralHelper::getEnumValue('SubjectType', $data->subject->type) == 'Lab' ? GeneralHelper::getEnumValue('StudentSection', $data->section_id) : $key }})</h3>
                                 <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Subject: </strong>{{ $data->subject->name }} - ({{ GeneralHelper::getEnumValue('SubjectType', $data->subject->type) }})</h3>
                                 <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Timing: </strong>From {{ date('h:i A', strtotime($data->start_time)) }} to {{ date('h:i A', strtotime($data->end_time)) }}</h3>
                             </div>
