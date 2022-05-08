@@ -37,7 +37,13 @@ class AjaxContoller extends Controller
         $semester = Semester::where('id', $request->semester_id)->first();
         $data = Teacher::where('department_id', $semester->department_id)->get()->toArray();
 
-        return $data;
+        $modifiedData = [];
+        foreach($data as $key => $value){
+            $value['teacherName'] = $value['first_name'] .' '. $value['last_name'];
+            $modifiedData[] = $value;
+        }
+
+        return $modifiedData;
     }
 
     /**

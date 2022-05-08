@@ -24,7 +24,7 @@
                     <td>{{ $subject->id }}</td>
                     <td>{{ $subject->name }}</td>
                     <td>{{ GeneralHelper::getEnumValue('SubjectType', $subject->type) }}</td>
-                    <td>{{ $subject->semester->name }}</td>
+                    <td>{{ $subject->semester->name }} - {{ $subject->semester->department->name }}</td>
                     <td>{{ $subject->teacher->first_name }} {{ $subject->teacher->last_name }}</td>
                     <td class="d-flex ">
                         <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-warning btn-sm mr-2">Edit</a>
