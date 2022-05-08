@@ -72,7 +72,7 @@ $(function () {
       const semester_id = $(this).val();
       const url = '/get-teacher';
       const data = { semester_id: semester_id };
-      ajaxFunc(url, data, 'teacher_select', 'id', 'first_name')
+      ajaxFunc(url, data, 'teacher_select', 'id', 'teacherName')
     });
 
 
