@@ -31,9 +31,12 @@ class GeneralHelper {
         endswitch;
     }
 
-    public static function get_students($batchID, $sectionName) {
+    public static function get_students($batchID, $sectionName, $sectionID) {
         $sections = self::getSectionsGroup($sectionName);
-        $students = DB::select(DB::raw("select * from duet_students WHERE `batch_id` = $batchID AND (`section` = $sections[0] OR `section` = $sections[1])"));
+        $students = [];
+        if(in_array($sectionID, $sections)):
+            $students = DB::select(DB::raw("select * from duet_students WHERE `batch_id` = $batchID AND (`section` = $sections[0] OR `section` = $sections[1]) ORDER BY `duet_students`.`roll_no` ASC"));
+        endif;
         return $students;
     }
 

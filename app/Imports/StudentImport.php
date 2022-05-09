@@ -25,7 +25,7 @@ class StudentImport implements ToModel, WithHeadingRow
         $department = Department::where('code', 'LIKE', '%'. $department_code .'%')->first();
         
         if($department):
-            $batch_id = Batch::where('name', 'LIKE', '%'. $batch .'%')->where('department_id', $department->id)->first();
+            $batch_id = Batch::where('name', strval($batch))->where('department_id', $department->id)->first();
             if($batch_id):
                 $batch_id = $batch_id->id;
             else:

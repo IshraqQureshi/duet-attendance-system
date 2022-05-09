@@ -14,6 +14,7 @@
                 <th>Subject</th>
                 <th>Day</th>
                 <th>Time</th>
+                <th>Section</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                     <td>{{ $timeTable->subject->name }}</td>
                     <td>{{ GeneralHelper::getEnumValue('Days', $timeTable->days) }}</td>
                     <td>{{ date('h:i A', strtotime($timeTable->start_time)) }} - {{ date('h:i A', strtotime($timeTable->end_time)) }}</td>
+                    <td>{{ GeneralHelper::getEnumValue('StudentSection', $timeTable->section_id) }}</td>
                     <td class="d-flex ">
                         <a href="{{ route('time-table.batch.edit', ['batchID' => $batchID, 'id' => $timeTable->id]) }}" class="btn btn-warning btn-sm mr-2">Edit</a>
                         <form method="POST" action="{{ route('time-table.batch.destroy', ['batchID' => $batchID, 'id' => $timeTable->id]) }}">
@@ -41,6 +43,7 @@
                 <th>Subject</th>
                 <th>Day</th>
                 <th>Time</th>
+                <th>Section</th>
                 <th>Actions</th>
             </tr>
         </tfoot>

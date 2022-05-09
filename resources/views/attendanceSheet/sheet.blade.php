@@ -9,18 +9,19 @@
 <body style="font-family: Arial;margin: 0">
     
     @foreach($sections as $key => $value)        
-        @foreach($timeTable as $data)
-            @if( !in_array( $value, GeneralHelper::getSectionsGroup($key) ) ):
+        @foreach($timeTable as $data)                    
+            @if( !in_array( $data->section_id, GeneralHelper::getSectionsGroup($key) ) ):
                 @php continue; @endphp
             @endif
+            
             @if(GeneralHelper::getEnumValue('SubjectType', $data->subject->type) == 'Lab')
                 @php
                     $students = GeneralHelper::get_students_single($data->batch_id, $data->section_id);
                 @endphp
             @else
                 @php
-                    $students = GeneralHelper::get_students($data->batch_id, $key);
-                @endphp
+                    $students = GeneralHelper::get_students($data->batch_id, $key, $data->section_id);                    
+                @endphp                
             @endif
             
             @if(count($students) > 0)
@@ -43,9 +44,10 @@
                                 <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Timing: </strong>From {{ date('h:i A', strtotime($data->start_time)) }} to {{ date('h:i A', strtotime($data->end_time)) }}</h3>
                             </div>
                             <div>
-                                <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Date: </strong>{{ $sheetDate }}</h3>
+                                <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Date: </strong>{{ date('d-m-Y', strtotime($sheetDate)) }}</h3>
                                 <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Day: </strong>{{ $day }}</h3>
                                 <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Teacher: </strong>{{ $data->subject->teacher->first_name }} {{ $data->subject->teacher->last_name }}</h3>
+                                <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;"><strong>Engaged: </strong><span style="width: 100px;height: 10px;border-bottom: 1px solid #000;display: inline-block;vertical-align: text-bottom;"></span></h3>
                             </div>
                         </div>
                         <div>
@@ -63,7 +65,7 @@
                             <h3 style="font-size: 14px;font-weight: 400;margin: 0;line-height: 1.7;text-align: right;"><strong>Teacher Sign:</strong><span style="width: 200px;height: 10px;border-bottom: 1px solid #000;display: inline-block;vertical-align: text-bottom;"></span></h3>
                         </div>
                     </div>
-                </div>            
+                </div>                           
             @endif
         @endforeach
     @endforeach
