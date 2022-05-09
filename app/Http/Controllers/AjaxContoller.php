@@ -20,8 +20,7 @@ class AjaxContoller extends Controller
      */
     public function get_semester(Request $request) {
         
-        $data = Semester::where('department_id', $request->department_id)->get()->toArray();
-
+        $data = Semester::where('department_id', $request->department_id)->get()->toArray();        
         return $data;
     }
     
@@ -56,6 +55,7 @@ class AjaxContoller extends Controller
     public function get_subject(Request $request) {
         $batch = Batch::where('id', $request->batchID)->first();
         $data = Subject::where('semester_id', $batch->current_semester)->get()->toArray();
+        // dd($data);
         $modifiedData = [];
         foreach($data as $key => $value){
             $value['sujectName'] = $value['name'] .' - '. GeneralHelper::getEnumValue('SubjectType', $value['type']);

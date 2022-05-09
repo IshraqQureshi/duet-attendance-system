@@ -79,8 +79,7 @@ class BatchesController extends Controller
 
                 if( isset($request->editID) ):
                     $batch = Batch::where('id', $request->editID)->first();
-                endif;
-
+                endif;                
                 $batch->name = $request->batchName;
                 $batch->department_id = $request->department_id;
                 $batch->current_semester = $request->current_semester;

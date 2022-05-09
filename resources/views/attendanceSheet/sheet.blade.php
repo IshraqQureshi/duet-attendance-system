@@ -54,7 +54,7 @@
                         </div>
                         <div style="display: flex;margin: 30px 0;flex-wrap: wrap;justify-content: flex-start;">                
                             @foreach($students as $index => $std)
-                            <div style="width: 120px;height: 50px;border: 1px solid #000;display: flex;justify-content: center;align-items: center;font-size: 12px">
+                            <div style="width: 100px;height: 40px;border: 1px solid #000;display: flex;justify-content: center;align-items: center;font-size: 12px">
                                 {{ $std->roll_no }}
                             </div>
                             @endforeach

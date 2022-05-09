@@ -22,11 +22,15 @@ class BatchImport implements ToModel, WithHeadingRow
         $semester_name = $row['current_semester'];
 
         $department_id = Department::where('code', 'LIKE', '%'. $department_code .'%')->first();
-        $current_semester = Semester::where('name', 'LIKE', '%'. $semester_name .'%')->first();
-
-        if( $department_id && $current_semester ):
-            $department_id = $department_id->id;
-            $current_semester = $current_semester->id;
+        
+        if( $department_id):
+            $current_semester = Semester::where('name', 'LIKE', '%'. $semester_name .'%')->where('department_id', $department_id->id)->first();
+            if($current_semester):
+                $department_id = $department_id->id;
+                $current_semester = $current_semester->id;
+            else:
+                return [];
+            endif;
         else:
             return [];
         endif;
