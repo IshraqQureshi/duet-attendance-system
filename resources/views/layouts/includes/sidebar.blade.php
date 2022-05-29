@@ -64,6 +64,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route('attendance.index') }}" class="nav-link">
+                    <i class="fas fa-file"></i>
+                    <p>Attendence</p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route('import.index') }}" class="nav-link">
                 <i class="fa fa-solid fa-file-import"></i>
                     <p>Import</p>

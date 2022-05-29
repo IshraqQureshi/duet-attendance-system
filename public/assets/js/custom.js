@@ -75,6 +75,54 @@ $(function () {
       ajaxFunc(url, data, 'teacher_select', 'id', 'teacherName')
     });
 
+    $(document).on('change', '.days_attendance_select' , function(){            
+      const day = $(this).val();
+      const url = '/get-department';
+      const data = { day: day };
+      ajaxFunc(url, data, 'department_attendance_select', 'id', 'name');
+      setTimeout(() => {
+        if( $('.department_attendance_select').val() != 'Please Select' ){
+          $('.department_attendance_select').change();
+        }
+      }, 2000)
+    });
+
+    $(document).on('change', '.department_attendance_select' , function(){            
+      const department_id = $(this).val();
+      const url = '/get-batch';
+      const data = { department_id: department_id };
+      ajaxFunc(url, data, 'batch_attendance_select', 'id', 'name')
+      setTimeout(() => {
+        if( $('.batch_attendance_select').val() != 'Please Select' ){
+          $('.batch_attendance_select').change();
+        }
+      }, 2000)
+    });
+
+    $(document).on('change', '.batch_attendance_select' , function(){            
+      const batch_id = $(this).val();
+      const url = '/get-subject-attendance';
+      const data = { batchID: batch_id };
+      ajaxFunc(url, data, 'subject_attendance_select', 'id', 'sujectName')
+      setTimeout(() => {
+        if( $('.subject_attendance_select').val() != 'Please Select' ){
+          $('.subject_attendance_select').change();
+        }
+      }, 2000)
+    });
+
+    $(document).on('change', '.subject_attendance_select' , function(){            
+      const subject_id = $(this).val();
+      const url = '/get-sections';
+      const data = { subject_id: subject_id };
+      ajaxFunc(url, data, 'section_attendance_select', 'id', 'section')
+      setTimeout(() => {
+        if( $('.section_attendance_select').val() != 'Please Select' ){
+          $('.section_attendance_select').change();
+        }
+      }, 2000)
+    });
+
 
 
     $('.department_select').change();
@@ -87,6 +135,55 @@ $(function () {
       console.log(data);
       ajaxFunc(url, data, 'subject_select', 'id', 'sujectName')
     }
+
+
+    $('.present_mark_btn').click(function(){
+      const department_id = $('input[name=department_id]').val();
+      const batch_id = $('input[name=batch_id]').val();
+      const section_id = $('input[name=section_id]').val();
+      const subject_id = $('input[name=subject_id]').val();
+      const date = $('input[name=date]').val();
+
+      const students = {};
+      $("input:checkbox[name=studentID]").each(function(){
+        const studentID = $(this).val();
+        if($(this).prop('checked')) {
+          students[studentID] = 1;
+        } else {
+          students[studentID] = 0;
+        }
+      });
+
+      const data = {
+        department_id: department_id,
+        batch_id: batch_id,
+        section_id: section_id,
+        subject_id: subject_id,
+        students: students,
+        date: date
+      }
+
+      showWait(true);
+      $.ajax({
+        url: '/mark-attendance',
+        type: 'post',
+        data: data,
+        success: (res) => {          
+          setTimeout(() => {
+            showWait(false);
+          }, 1000);
+          const data = JSON.parse(res);
+          if(data.status){
+            alert('Attendance Marked');            
+          } else {
+            alert('Something went wrong, please contact developer');
+          }
+          window.location.reload();
+        }
+      })
+
+      
+    })
 
 
 });

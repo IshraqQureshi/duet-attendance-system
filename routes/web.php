@@ -1,18 +1,20 @@
 <?php
 
-use App\Http\Controllers\AttendanceSheetController;
-use App\Http\Controllers\BatchesController;
-use App\Http\Controllers\DepartmentController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AjaxContoller;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\BatchesController;
 use App\Http\Controllers\SemesterContoller;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TimeTableController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AjaxContoller;
-use App\Http\Controllers\ExportController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\AttendanceSheetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,4 +70,12 @@ Route::get('/export-process', [ExportController::class, 'export'])->name('export
 Route::post('/get-semester', [AjaxContoller::class, 'get_semester'])->name('ajax.get_semester');
 Route::post('/get-teacher', [AjaxContoller::class, 'get_teacher'])->name('ajax.get_teacher');
 Route::post('/get-subject', [AjaxContoller::class, 'get_subject'])->name('ajax.get_subject');
+Route::post('/get-subject-attendance', [AjaxContoller::class, 'get_subject_attendance'])->name('ajax.get_subject_attendance');
+Route::post('/get-department', [AjaxContoller::class, 'get_department'])->name('ajax.get_department');
+Route::post('/get-batch', [AjaxContoller::class, 'get_batch'])->name('ajax.get_batch');
+Route::post('/get-sections', [AjaxContoller::class, 'get_sections'])->name('ajax.get_sections');
+Route::post('/mark-attendance', [AjaxContoller::class, 'mark_attendance'])->name('ajax.mark_attendance');
 
+
+Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+Route::post('/attendance-students', [AttendanceController::class, 'students'])->name('attendance.students');
